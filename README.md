@@ -101,4 +101,4 @@ Content-Type: application/json
 
 ## 👤 Autoria
 
-Projeto desenvolvido por [Seu Nome] como parte da disciplina de Desenvolvimento de Sistemas Distribuídos.
+Projeto desenvolvido por Mari como parte da disciplina de Computação Distribuída.
