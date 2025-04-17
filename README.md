@@ -90,6 +90,7 @@ Content-Type: application/json
   "id": 1,
   "nome": "Maria Artesã"
 }
+```
 
 ## ✅ Funcionalidades Demonstradas
 
