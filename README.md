@@ -67,14 +67,12 @@ Produtos: http://localhost:5001
 |--------|-------------|-----------------------|
 | POST   | `/usuarios` | Cadastra um usuário   |
 | GET    | `/usuarios` | Lista os usuários     |
-|        |             | **[Exportar para Sheets]** |
 
 ### Product Service (localhost:5001)
 
 | Método | Rota        | Descrição        |
 |--------|-------------|-------------------|
 | GET    | `/produtos` | Lista produtos    |
-|        |             | **[Exportar para Sheets]** |
 
 ## 🧪 Testando com Postman
 
