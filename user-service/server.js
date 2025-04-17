@@ -1,5 +1,6 @@
 const axios = require('axios');  // Para fazer requisições HTTP
 const express = require('express');
+const client = require('./grpcClient');
 const app = express();
 const port = 5000;
 
@@ -34,6 +35,33 @@ app.get('/', (req, res) => {
   res.send('Usuários - Microserviço');
 });
 
+// Rota que retorna um usuário com base no id.
+app.get('/users/:id', (req, res) => {
+  const users = [
+    { id: 1, nome: 'Maria Artesã' },
+    { id: 2, nome: 'João Artesão' },
+  ];
+
+  const user = users.find(u => u.id === parseInt(req.params.id));
+
+  if (!user) {
+    return res.status(404).json({ error: 'Usuário não encontrado' });
+  }
+
+  res.json(user);
+});
+
+// Comunicação gRPC
+app.get('/product/:id', (req, res) => {
+  client.getProduct({ id: req.params.id }, (err, response) => {
+    if (err) {
+      return res.status(404).json({ error: err.message });
+    }
+    res.json(response);
+  });
+});
+
+// Iniciar o serviço de usuários na porta 5000
 app.listen(port, () => {
   console.log(`Serviço de Usuários rodando na porta ${port}`);
 });

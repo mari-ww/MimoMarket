@@ -1,6 +1,7 @@
+const axios = require('axios');
 const express = require('express');
 const app = express();
-const port = 6000;
+const port = 5001;
 
 let produtos = [];  // Lista de produtos temporária
 
@@ -26,3 +27,21 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Serviço de Produtos rodando na porta ${port}`);
 });
+
+// rota pra buscar dados do usuário
+app.get('/usuario-de-produto/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      // Chamada REST para o user-service
+      const resposta = await axios.get(`http://user-service:5000/users/${id}`);
+  
+      res.json({
+        mensagem: 'Dados do usuário retornados via REST!',
+        usuario: resposta.data,
+      });
+    } catch (erro) {
+      res.status(500).json({ erro: 'Erro ao buscar usuário', detalhe: erro.message });
+    }
+  });
+  
